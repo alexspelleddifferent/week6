@@ -27,10 +27,13 @@
         <option name="colour">yellow</option>
         <option name="colour">blue</option>
     </select>
+<label for="circle_size">Set circle size (in numbers)</label>
+<input type="number" id="circle_size" min="1">
 </br>
 <button id="clear">clear canvas</button> 
 <script>
   let colour_select=document.querySelector('#colour')
+  let c_size=document.querySelector('#circle_size')
   let canvas = document.querySelector('#canvas')
   let context = canvas.getContext('2d')
   let clear=document.querySelector('#clear')
@@ -64,7 +67,7 @@
     //Draw a filled rectangle centered under the mouse click
     //x, y is the top left corner, so shift up and left by 5 to center it under the mouse.
     context.beginPath()
-    context.arc(x-5, y-5, 5, 0, 2*Math.PI)
+    context.arc(x-5, y-5, c_size.value, 0, 2*Math.PI)
     context.fillStyle=colour_select.value
     context.fill()
 
