@@ -33,3 +33,30 @@ bridges.forEach(
     }
 )
 
+let chart_canvas=document.querySelector('#bridge_chart')
+let ctx=chart_canvas.getContext('2d')
+
+bridge_names = []
+bridge_lengths = []
+bridges.forEach (
+    bridge => {
+        bridge_names.push(bridge.name)
+        bridge_lengths.push(bridge.length)
+    }
+) 
+console.log(bridge_names)
+console.log(bridge_lengths)
+
+let bridge_chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: bridge_names,
+        datasets: [{
+            label: "Longest Bridges",
+            data: bridge_lengths,
+            backgroundColor: "rgba(205, 127, 50, 1)"
+        }]
+    }, options : {scales:{yAxes: [{ticks: {beginAtZero:true}}]}}
+
+
+})
